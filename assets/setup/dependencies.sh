@@ -68,8 +68,6 @@ make all && sudo make install
 cd ..
 rm -rf Hyprland
 
-read  -n 1 -p "start install of hyprpaper"
-
 sudo apt-get -y install libmagic-dev
 git clone --recursive https://github.com/hyprwm/hyprpaper
 cd hyprpaper
@@ -78,8 +76,6 @@ cmake --build ./build --config Release --target hyprpaper -j`nproc 2>/dev/null |
 sudo cmake --install ./build
 cd ..
 rm -rf hyprpaper
-
-read  -n 1 -p "start install of hyprlock"
 
 sudo apt-get -y install libsdbus-c++-dev libpam0g-dev
 git clone --recursive https://github.com/hyprwm/hyprlock
@@ -90,8 +86,6 @@ sudo cmake --install build
 cd ..
 rm -rf hyprlock
 
-read  -n 1 -p "start install of hypridle"
-
 git clone --recursive https://github.com/hyprwm/hypridle
 cd hypridle
 cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -S . -B ./build
@@ -99,8 +93,6 @@ cmake --build ./build --config Release --target hypridle -j`nproc 2>/dev/null ||
 sudo cmake --install build
 cd ..
 rm -rf hypridle
-
-read  -n 1 -p "start install of xdg-desktop-portal-hyprland"
 
 sudo apt-get -y install qt6-base-dev libpipewire-0.3-dev
 git clone --recursive https://github.com/hyprwm/xdg-desktop-portal-hyprland
@@ -111,16 +103,16 @@ sudo cmake --install build
 cd ..
 rm -rf xdg-desktop-portal-hyprland
 
-read  -n 1 -p "start cleanup"
-
-sudo apt-get -y --no-install-recommends waybar kitty nautilus
+sudo apt-get -y --no-install-recommends install waybar kitty nautilus
 
 # dependencies for mylinuxfourwork
-sudo apt-get -y --no-install-recommends zip unzip wget rofi libnotify-bin dunst fonts-noto sddm pipx python3-dev libgirepository1.0-dev python3-importlib-metadata python3-imageio  gir1.2-gtk-3.0 libgtk-4-dev
-sudo PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin pipx install waypaper
+sudo apt-get -y --no-install-recommends install zip unzip wget rofi libnotify-bin dunst fonts-noto sddm pipx python3-dev libgirepository1.0-dev python3-importlib-metadata python3-imageio  gir1.2-gtk-3.0 libgtk-4-dev
+#sudo PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin pipx install waypaper pywal
+pipx install waypaper pywal
 
 git clone --depth=1 https://github.com/mylinuxforwork/dotfiles.git
 cp -r dotfiles/share/dotfiles/.config ~/
+cp -r dotfiles/share/wallpapers/ ~/
 
 sudo apt-get -y purge $BUILD_TOOLS
 
