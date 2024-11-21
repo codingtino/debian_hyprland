@@ -11,7 +11,8 @@ set -euo pipefail
 #sudo apt-get update
 #sudo apt-get -y full-upgrade
 
-sudo apt-get -y install cmake build-essential pkg-config
+BUILD_TOOLS="cmake build-essential pkg-config"
+sudo apt-get -y install $BUILD_TOOLS
 
 mkdir -p $WORKING_DIR/tmp
 cd $WORKING_DIR/tmp
@@ -34,7 +35,7 @@ sudo cmake --install build
 cd ..
 rm -rf hyprwayland-scanner/
 
-sudo apt-get -y install libseat-dev libinput-dev librust-wayland-client-dev wayland-protocols libdrm-dev libgbm-dev libudev-dev libdisplay-info-dev hwdata
+sudo apt-get -y install libseat-dev libinput-dev libgl1-mesa-dev librust-wayland-client-dev wayland-protocols libdrm-dev libgbm-dev libudev-dev libdisplay-info-dev hwdata
 git clone https://github.com/hyprwm/aquamarine.git
 cd aquamarine/
 cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -S . -B ./build
@@ -67,6 +68,59 @@ make all && sudo make install
 cd ..
 rm -rf Hyprland
 
+read  -n 1 -p "start install of hyprpaper"
+
+#sudo apt-get -y install 
+git clone --recursive https://github.com/hyprwm/hyprpaper
+cd hyprpaper
+cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -S . -B ./build
+cmake --build ./build --config Release --target hyprpaper -j`nproc 2>/dev/null || getconf _NPROCESSORS_CONF`
+cmake --install ./build
+cd ..
+rm -rf hyprpaper
+
+read  -n 1 -p "start install of hyprlock"
+
+#sudo apt-get -y install 
+git clone --recursive https://github.com/hyprwm/hyprlock
+cd hyprlock
+cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -S . -B ./build
+cmake --build ./build --config Release --target hyprlock -j`nproc 2>/dev/null || getconf _NPROCESSORS_CONF`
+sudo cmake --install build
+cd ..
+rm -rf hyprlock
+
+read  -n 1 -p "start install of hypridle"
+
+#sudo apt-get -y install 
+git clone --recursive https://github.com/hyprwm/hypridle
+cd hypridle
+cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -S . -B ./build
+cmake --build ./build --config Release --target hypridle -j`nproc 2>/dev/null || getconf _NPROCESSORS_CONF`
+sudo cmake --install build
+cd ..
+rm -rf hypridle
+
+read  -n 1 -p "start install of xdg-desktop-portal-hyprland"
+
+#sudo apt-get -y install 
+git clone --recursive https://github.com/hyprwm/xdg-desktop-portal-hyprland
+cd xdg-desktop-portal-hyprland
+cmake -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib -DCMAKE_INSTALL_PREFIX=/usr -B build
+cmake --build build
+sudo cmake --install build
+cd ..
+rm -rf xdg-desktop-portal-hyprland
+
+read  -n 1 -p "start cleanup"
 
 
-# cd $CALLER_DIR
+sudo apt-get -y purge $BUILD_TOOLS
+
+sudo apt-get -y --no-install-reccomend waybar kitty wofi nautilus
+
+# dependencies for mylinuxfourwork
+sudo apt-get -y --no-install-reccomend zip wget 
+
+
+cd $CALLER_DIR
