@@ -106,21 +106,25 @@ rm -rf xdg-desktop-portal-hyprland
 sudo apt-get -y --no-install-recommends install waybar kitty nautilus xwayland
 
 # dependencies for mylinuxfourwork
-sudo apt-get -y --no-install-recommends install zip unzip wget rofi libnotify-bin dunst fonts-noto sddm pipx python3-dev libgirepository1.0-dev python3-importlib-metadata python3-imageio  gir1.2-gtk-3.0 libgtk-4-dev imagemagick
+sudo apt-get -y --no-install-recommends install zip unzip wget rofi wlogout libnotify-bin dunst fonts-noto sddm pipx python3-dev libgirepository1.0-dev python3-importlib-metadata python3-imageio  gir1.2-gtk-3.0 libgtk-4-dev imagemagick
 sudo PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin pipx install waypaper pywal
 
 git clone --depth=1 https://github.com/mylinuxforwork/dotfiles.git
 cp -r dotfiles/share/dotfiles/.config ~/
+
+# set layout to DE
+sudo sed -i "s|kb_layout = us|kb_layout = de|" .config/hypr/conf/keyboard.conf
 cp -r dotfiles/share/wallpapers/ ~/
 
+waypaper --folder ~/wallpapers/ --random
 
 # install waybar-symbol-font
-wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/NerdFontsSymbolsOnly.zip
-cd ~/.local/share/fonts
-unzip NerdFontsSymbolsOnly.zip
-rm NerdFontsSymbolsOnly.zip
-fc-cache -fv
+sudo wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/NerdFontsSymbolsOnly.zip
+sudo unzip NerdFontsSymbolsOnly.zip -d /usr/local/share/fonts/
+sudo rm NerdFontsSymbolsOnly.zip
+sudo fc-cache -fv
 cd ~
+
 
 
 sudo apt-get -y purge $BUILD_TOOLS
