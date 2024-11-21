@@ -60,7 +60,7 @@ sudo cmake --install build
 cd ..
 rm -rf hyprcursor/
 
-sudo apt-get -y install libxkbcommon-dev libxcursor-dev 
+sudo apt-get -y install libxkbcommon-dev libxcursor-dev libxcb-xfixes0-dev libxcb-icccm4-dev libxcb-composite0-dev libxcb-res0-dev libxcb-errors-dev
 git clone --recursive https://github.com/hyprwm/Hyprland
 cd Hyprland
 make all && sudo make install
