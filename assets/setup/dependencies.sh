@@ -106,14 +106,24 @@ rm -rf xdg-desktop-portal-hyprland
 sudo apt-get -y --no-install-recommends install waybar kitty nautilus
 
 # dependencies for mylinuxfourwork
-sudo apt-get -y --no-install-recommends install zip unzip wget rofi libnotify-bin dunst fonts-noto sddm pipx python3-dev libgirepository1.0-dev python3-importlib-metadata python3-imageio  gir1.2-gtk-3.0 libgtk-4-dev
-#sudo PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin pipx install waypaper pywal
-pipx install waypaper pywal
+sudo apt-get -y --no-install-recommends install zip unzip wget rofi libnotify-bin dunst fonts-noto sddm pipx python3-dev libgirepository1.0-dev python3-importlib-metadata python3-imageio  gir1.2-gtk-3.0 libgtk-4-dev imagemagick
+sudo PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin pipx install waypaper pywal
 
 git clone --depth=1 https://github.com/mylinuxforwork/dotfiles.git
 cp -r dotfiles/share/dotfiles/.config ~/
 cp -r dotfiles/share/wallpapers/ ~/
 
+
+# install waybar-symbol-font
+wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/NerdFontsSymbolsOnly.zip
+cd ~/.local/share/fonts
+unzip NerdFontsSymbolsOnly.zip
+rm NerdFontsSymbolsOnly.zip
+fc-cache -fv
+cd ~
+
+
 sudo apt-get -y purge $BUILD_TOOLS
+sudo apt-get -y autoremove
 
 cd $CALLER_DIR
