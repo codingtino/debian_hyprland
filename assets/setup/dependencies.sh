@@ -103,7 +103,7 @@ sudo cmake --install build
 cd ..
 rm -rf xdg-desktop-portal-hyprland
 
-sudo apt-get -y --no-install-recommends install waybar kitty nautilus
+sudo apt-get -y --no-install-recommends install waybar kitty nautilus xwayland
 
 # dependencies for mylinuxfourwork
 sudo apt-get -y --no-install-recommends install zip unzip wget rofi libnotify-bin dunst fonts-noto sddm pipx python3-dev libgirepository1.0-dev python3-importlib-metadata python3-imageio  gir1.2-gtk-3.0 libgtk-4-dev imagemagick
