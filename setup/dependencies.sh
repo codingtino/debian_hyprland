@@ -103,7 +103,7 @@ sudo cmake --install build
 cd ..
 rm -rf xdg-desktop-portal-hyprland
 
-sudo apt-get -y --no-install-recommends install wget waybar kitty nautilus xwayland wlogout sddm wofi dunst pipx python3-dev libgirepository1.0-dev python3-importlib-metadata python3-imageio gir1.2-gtk-3.0 libgtk-4-dev imagemagick policykit-1-gnome
+sudo apt-get -y --no-install-recommends install unzip wget waybar kitty nautilus xwayland wlogout sddm wofi dunst pipx python3-dev libgirepository1.0-dev python3-importlib-metadata python3-imageio gir1.2-gtk-3.0 libgtk-4-dev imagemagick policykit-1-gnome
 
 # dependencies for mylinuxfourwork
 #sudo apt-get -y --no-install-recommends install zip unzip wget rofi wlogout libnotify-bin dunst fonts-noto sddm pipx python3-dev libgirepository1.0-dev python3-importlib-metadata python3-imageio  gir1.2-gtk-3.0 libgtk-4-dev imagemagick policykit-1-gnome
