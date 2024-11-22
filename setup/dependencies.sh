@@ -138,8 +138,11 @@ sudo apt-get -y --no-install-recommends install qt6-declarative-dev qt6-5compat-
 sudo mkdir -p /usr/share/sddm/themes
 wget -qO- https://github.com/minMelody/sddm-sequoia/releases/download/1.4/sequoia.tar.gz | sudo tar xzv -C /usr/share/sddm/themes
 
+wget https://github.com/Alex313031/thorium/releases/download/M128.0.6613.189/thorium-browser_128.0.6613.189_AVX.deb
+sudo dpkg -i thorium-browser_128.0.6613.189_AVX.deb
+sudo apt install -f
 
-sudo apt-get -y purge $BUILD_TOOLS
-sudo apt-get -y autoremove
+# sudo apt-get -y purge $BUILD_TOOLS
+# sudo apt-get -y autoremove
 
 cd $CALLER_DIR
