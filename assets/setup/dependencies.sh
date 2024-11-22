@@ -103,7 +103,7 @@ sudo cmake --install build
 cd ..
 rm -rf xdg-desktop-portal-hyprland
 
-sudo apt-get -y --no-install-recommends install waybar kitty nautilus xwayland wlogout sddm wofi dunst pipx python3-dev libgirepository1.0-dev python3-importlib-metadata python3-imageio gir1.2-gtk-3.0 libgtk-4-dev imagemagick policykit-1-gnome
+sudo apt-get -y --no-install-recommends install wget waybar kitty nautilus xwayland wlogout sddm wofi dunst pipx python3-dev libgirepository1.0-dev python3-importlib-metadata python3-imageio gir1.2-gtk-3.0 libgtk-4-dev imagemagick policykit-1-gnome
 
 # dependencies for mylinuxfourwork
 #sudo apt-get -y --no-install-recommends install zip unzip wget rofi wlogout libnotify-bin dunst fonts-noto sddm pipx python3-dev libgirepository1.0-dev python3-importlib-metadata python3-imageio  gir1.2-gtk-3.0 libgtk-4-dev imagemagick policykit-1-gnome
@@ -135,7 +135,6 @@ cd ~
 
 # sddm theme
 sudo apt-get -y --no-install-recommends install qt6-declarative-dev qt6-5compat-dev
-wget https://github.com/minMelody/sddm-sequoia/releases/download/1.4/sequoia.tar.gz
 sudo mkdir -p /usr/share/sddm/themes
 wget -qO- https://github.com/minMelody/sddm-sequoia/releases/download/1.4/sequoia.tar.gz | sudo tar xzvf -C /usr/share/sddm/themes
 
