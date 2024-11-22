@@ -106,14 +106,14 @@ rm -rf xdg-desktop-portal-hyprland
 sudo apt-get -y --no-install-recommends install waybar kitty nautilus xwayland
 
 # dependencies for mylinuxfourwork
-sudo apt-get -y --no-install-recommends install zip unzip wget rofi wlogout libnotify-bin dunst fonts-noto sddm pipx python3-dev libgirepository1.0-dev python3-importlib-metadata python3-imageio  gir1.2-gtk-3.0 libgtk-4-dev imagemagick
+sudo apt-get -y --no-install-recommends install zip unzip wget rofi wlogout libnotify-bin dunst fonts-noto sddm pipx python3-dev libgirepository1.0-dev python3-importlib-metadata python3-imageio  gir1.2-gtk-3.0 libgtk-4-dev imagemagick policykit-1-gnome
 sudo PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin pipx install waypaper pywal
 
 git clone --depth=1 https://github.com/mylinuxforwork/dotfiles.git
 cp -r dotfiles/share/dotfiles/.config ~/
 
 # set layout to DE
-sudo sed -i "s|kb_layout = us|kb_layout = de|" .config/hypr/conf/keyboard.conf
+sudo sed -i "s|kb_layout = us|kb_layout = de|" ~/.config/hypr/conf/keyboard.conf
 cp -r dotfiles/share/wallpapers/ ~/
 
 waypaper --folder ~/wallpapers/ --random
