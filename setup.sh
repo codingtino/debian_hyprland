@@ -13,7 +13,7 @@ WORKING_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 
 echo "Installing Dependencies"
-source "$WORKING_DIR/assets/setup/dependencies.sh"
+source "$WORKING_DIR/setup/dependencies.sh"
 
 
 
