@@ -103,20 +103,28 @@ sudo cmake --install build
 cd ..
 rm -rf xdg-desktop-portal-hyprland
 
-sudo apt-get -y --no-install-recommends install waybar kitty nautilus xwayland
+sudo apt-get -y --no-install-recommends install waybar kitty nautilus xwayland wlogout sddm wofi dunst pipx python3-dev libgirepository1.0-dev python3-importlib-metadata python3-imageio gir1.2-gtk-3.0 libgtk-4-dev imagemagick policykit-1-gnome
 
 # dependencies for mylinuxfourwork
-sudo apt-get -y --no-install-recommends install zip unzip wget rofi wlogout libnotify-bin dunst fonts-noto sddm pipx python3-dev libgirepository1.0-dev python3-importlib-metadata python3-imageio  gir1.2-gtk-3.0 libgtk-4-dev imagemagick policykit-1-gnome
+#sudo apt-get -y --no-install-recommends install zip unzip wget rofi wlogout libnotify-bin dunst fonts-noto sddm pipx python3-dev libgirepository1.0-dev python3-importlib-metadata python3-imageio  gir1.2-gtk-3.0 libgtk-4-dev imagemagick policykit-1-gnome
 sudo PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin pipx install waypaper pywal
 
 git clone --depth=1 https://github.com/mylinuxforwork/dotfiles.git
-cp -r dotfiles/share/dotfiles/.config ~/
+#cp -r dotfiles/share/dotfiles/.config ~/
 
 # set layout to DE
-sudo sed -i "s|kb_layout = us|kb_layout = de|" ~/.config/hypr/conf/keyboard.conf
-cp -r dotfiles/share/wallpapers/ ~/
+#sudo sed -i "s|kb_layout = us|kb_layout = de|" ~/.config/hypr/conf/keyboard.conf
+#cp -r dotfiles/share/wallpapers/ ~/
+# waypaper --folder ~/wallpapers/ --random
 
-waypaper --folder ~/wallpapers/ --random
+
+
+
+git clone --depth=1 https://github.com/D3Ext/aesthetic-wallpapers.git
+cp -r aesthetic-wallpapers/images/ ~/
+
+
+waypaper --folder ~/images/ --random
 
 # install waybar-symbol-font
 sudo wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/NerdFontsSymbolsOnly.zip
@@ -125,6 +133,11 @@ sudo rm NerdFontsSymbolsOnly.zip
 sudo fc-cache -fv
 cd ~
 
+# sddm theme
+sudo apt-get -y --no-install-recommends install qt6-declarative-dev qt6-5compat-dev
+wget https://github.com/minMelody/sddm-sequoia/releases/download/1.4/sequoia.tar.gz
+sudo mkdir -p /usr/share/sddm/themes
+wget -qO- https://github.com/minMelody/sddm-sequoia/releases/download/1.4/sequoia.tar.gz | sudo tar xzvf -C /usr/share/sddm/themes
 
 
 sudo apt-get -y purge $BUILD_TOOLS
