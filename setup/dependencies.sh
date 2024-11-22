@@ -68,7 +68,7 @@ make all && sudo make install
 cd ..
 rm -rf Hyprland
 
-sudo apt-get -y install libmagic-dev
+sudo apt-get -y install libmagic-dev libjxl-dev
 git clone --recursive https://github.com/hyprwm/hyprpaper
 cd hyprpaper
 cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -S . -B ./build
@@ -136,7 +136,7 @@ cd ~
 # sddm theme
 sudo apt-get -y --no-install-recommends install qt6-declarative-dev qt6-5compat-dev
 sudo mkdir -p /usr/share/sddm/themes
-wget -qO- https://github.com/minMelody/sddm-sequoia/releases/download/1.4/sequoia.tar.gz | sudo tar xzvf -C /usr/share/sddm/themes
+wget -qO- https://github.com/minMelody/sddm-sequoia/releases/download/1.4/sequoia.tar.gz | sudo tar xzv -C /usr/share/sddm/themes
 
 
 sudo apt-get -y purge $BUILD_TOOLS
